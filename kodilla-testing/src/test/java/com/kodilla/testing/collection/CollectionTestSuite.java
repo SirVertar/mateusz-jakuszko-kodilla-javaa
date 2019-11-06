@@ -3,6 +3,7 @@ package com.kodilla.testing.collection;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class CollectionTestSuite {
@@ -32,8 +33,10 @@ public class CollectionTestSuite {
         System.out.println("Testing with empty list...");
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         ArrayList<Integer> emptyArray = new ArrayList<Integer>();
+
         //When
         ArrayList result = oddNumbersExterminator.exterminate(emptyArray);
+
         //Then
         Assert.assertEquals(emptyArray.size(), result.size());
     }
@@ -44,15 +47,22 @@ public class CollectionTestSuite {
         System.out.println("Testing with normal list...");
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         ArrayList<Integer> arrayWithoutOdds = new ArrayList<>();
-        for (int i = 0; i < 136; i = i + 2) {
-            arrayWithoutOdds.add(i);
-        }
-        //When
+        arrayWithoutOdds.add(44);
+        arrayWithoutOdds.add(66);
+        arrayWithoutOdds.add(98);
+
         ArrayList<Integer> testingArray = new ArrayList<>();
-        for (int i = 0; i < 136; i++) {
-            testingArray.add(i);
-        }
+        testingArray.add(33);
+        testingArray.add(44);
+        testingArray.add(66);
+        testingArray.add(11);
+        testingArray.add(21);
+        testingArray.add(98);
+        testingArray.add(9999911);
+
+        //When
         ArrayList<Integer> result = oddNumbersExterminator.exterminate(testingArray);
+
         //Then
         Assert.assertArrayEquals(arrayWithoutOdds.toArray(), result.toArray());
     }
