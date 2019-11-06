@@ -17,8 +17,7 @@ public class ShapeCollector {
 
     public boolean removeFigure(Shape shape) {
         if(listOfShapes.indexOf(shape) >= 0) {
-            int index = listOfShapes.indexOf(shape);
-            listOfShapes.remove(index);
+            listOfShapes.remove(shape);
             return true;
         } else {
             return false;
@@ -33,11 +32,10 @@ public class ShapeCollector {
         StringBuilder allFigures = new StringBuilder();
         for (int i = 0; i < listOfShapes.size() ; i++) {
             if (i<listOfShapes.size()-1) {
-                allFigures.append(listOfShapes.get(i).toString() + ", ");
+                allFigures.append(listOfShapes.get(i).toString()).append(", ");
             } else allFigures.append(listOfShapes.get(i));
         }
-        String result = allFigures.toString();
-        return result;
+        return allFigures.toString();
     }
 
     public ArrayList<Shape> getListOfShapes() {
