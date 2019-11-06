@@ -6,18 +6,21 @@ public class Circle implements Shape {
 
     private double radius;
 
+    public Circle() {
+    }
+
     public Circle(double radius) {
         this.radius = radius;
     }
 
     @Override
     public String getShapeName() {
-        return null;
+        return "Circle";
     }
 
     @Override
     public double getField() {
-        return 0;
+        return Math.PI * radius * radius;
     }
 
     @Override
@@ -32,4 +35,10 @@ public class Circle implements Shape {
     public int hashCode() {
         return Objects.hash(radius);
     }
+
+    @Override
+    public String toString() {
+        return "Circle";
+    }
+
 }

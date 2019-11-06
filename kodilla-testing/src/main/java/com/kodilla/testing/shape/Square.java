@@ -6,18 +6,21 @@ public class Square implements Shape {
 
     private double sideOfSquare;
 
+    public Square() {
+    }
+
     public Square(double sideOfSquare) {
         this.sideOfSquare = sideOfSquare;
     }
 
     @Override
     public String getShapeName() {
-        return null;
+        return "Square";
     }
 
     @Override
     public double getField() {
-        return 0;
+        return sideOfSquare * sideOfSquare;
     }
 
     @Override
@@ -32,4 +35,10 @@ public class Square implements Shape {
     public int hashCode() {
         return Objects.hash(sideOfSquare);
     }
+
+    @Override
+    public String toString() {
+        return "Square";
+    }
+
 }

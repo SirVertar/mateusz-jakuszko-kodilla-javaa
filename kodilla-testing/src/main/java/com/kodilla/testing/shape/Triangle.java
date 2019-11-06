@@ -7,6 +7,9 @@ public class Triangle implements Shape {
     private double sideOfTriangle;
     private double heightOfTriangle;
 
+    public Triangle() {
+    }
+
     public Triangle(double sideOfTriangle, double heightOfTriangle) {
         this.sideOfTriangle = sideOfTriangle;
         this.heightOfTriangle = heightOfTriangle;
@@ -14,12 +17,12 @@ public class Triangle implements Shape {
 
     @Override
     public String getShapeName() {
-        return null;
+        return "Triangle";
     }
 
     @Override
     public double getField() {
-        return 0;
+        return 0.5*sideOfTriangle*heightOfTriangle;
     }
 
     @Override
@@ -34,5 +37,10 @@ public class Triangle implements Shape {
     @Override
     public int hashCode() {
         return Objects.hash(sideOfTriangle, heightOfTriangle);
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle";
     }
 }

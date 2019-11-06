@@ -1,6 +1,7 @@
 package com.kodilla.testing.user;
 
 import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.shape.*;
 import com.kodilla.testing.user.SimpleUser;
 
 public class TestingMain {
