@@ -37,10 +37,10 @@ public class StatisticsCalculatorTestSuite {
         List<String> listOfUsers = new ArrayList<>();
         listOfUsers.add("Vertar");
         listOfUsers.add("Vertar");
-        listOfUsers.add("Vertar");
+
 
         int numberOfPosts = 0;
-        int numberOfComments = 1;
+        int numberOfComments = 6;
 
         when(statisticsMock.usersNames()).thenReturn(listOfUsers);
         when(statisticsMock.postsCount()).thenReturn(numberOfPosts);
@@ -53,17 +53,17 @@ public class StatisticsCalculatorTestSuite {
         int resultOfNumberOfUsers = statisticsCalculator.getNumberOfUsers();
         int resultOfNumberOfPosts = statisticsCalculator.getNumberOfPosts();
         int resultOfNumberOfComments = statisticsCalculator.getNumberOfComments();
-        Object resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
-        Object resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
-        Object resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
+        double resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
+        double resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
+        double resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
 
         //Then
-        Assert.assertEquals(3, resultOfNumberOfUsers);
+        Assert.assertEquals(2, resultOfNumberOfUsers);
         Assert.assertEquals(0, resultOfNumberOfPosts);
-        Assert.assertEquals(1, resultOfNumberOfComments);
-        Assert.assertEquals(0.0 / 3, resultOfAverageNumberOfPostsPerUser);
-        Assert.assertEquals(1.0 / 3, resultOfAverageNumberOfCommentsPerUser);
-        Assert.assertEquals(false, resultOfAverageNumberOfCommentsPerPost);
+        Assert.assertEquals(6, resultOfNumberOfComments);
+        Assert.assertEquals(0.0, resultOfAverageNumberOfPostsPerUser,0);
+        Assert.assertEquals(3, resultOfAverageNumberOfCommentsPerUser,0);
+        Assert.assertEquals(0, resultOfAverageNumberOfCommentsPerPost,0);
     }
 
     @Test
@@ -72,7 +72,6 @@ public class StatisticsCalculatorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
 
         List<String> listOfUsers = new ArrayList<>();
-        listOfUsers.add("Vertar");
         listOfUsers.add("Vertar");
         listOfUsers.add("Vertar");
 
@@ -90,17 +89,17 @@ public class StatisticsCalculatorTestSuite {
         int resultOfNumberOfUsers = statisticsCalculator.getNumberOfUsers();
         int resultOfNumberOfPosts = statisticsCalculator.getNumberOfPosts();
         int resultOfNumberOfComments = statisticsCalculator.getNumberOfComments();
-        Object resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
-        Object resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
-        Object resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
+        double resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
+        double resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
+        double resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
 
         //Then
-        Assert.assertEquals(3, resultOfNumberOfUsers);
+        Assert.assertEquals(2, resultOfNumberOfUsers);
         Assert.assertEquals(1000, resultOfNumberOfPosts);
         Assert.assertEquals(10, resultOfNumberOfComments);
-        Assert.assertEquals(1000.0 / 3, resultOfAverageNumberOfPostsPerUser);
-        Assert.assertEquals(10.0 / 3, resultOfAverageNumberOfCommentsPerUser);
-        Assert.assertEquals(10.0 / 1000, resultOfAverageNumberOfCommentsPerPost);
+        Assert.assertEquals(500, resultOfAverageNumberOfPostsPerUser,0);
+        Assert.assertEquals(5, resultOfAverageNumberOfCommentsPerUser,0);
+        Assert.assertEquals(0.01, resultOfAverageNumberOfCommentsPerPost,0);
 
     }
 
@@ -112,9 +111,8 @@ public class StatisticsCalculatorTestSuite {
         List<String> listOfUsers = new ArrayList<>();
         listOfUsers.add("Vertar");
         listOfUsers.add("Vertar");
-        listOfUsers.add("Vertar");
 
-        int numberOfPosts = 99;
+        int numberOfPosts = 100;
         int numberOfComments = 0;
 
         when(statisticsMock.usersNames()).thenReturn(listOfUsers);
@@ -129,17 +127,17 @@ public class StatisticsCalculatorTestSuite {
         int resultOfNumberOfUsers = statisticsCalculator.getNumberOfUsers();
         int resultOfNumberOfPosts = statisticsCalculator.getNumberOfPosts();
         int resultOfNumberOfComments = statisticsCalculator.getNumberOfComments();
-        Object resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
-        Object resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
-        Object resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
+        double resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
+        double resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
+        double resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
 
         //Then
-        Assert.assertEquals(3, resultOfNumberOfUsers);
-        Assert.assertEquals(99, resultOfNumberOfPosts);
+        Assert.assertEquals(2, resultOfNumberOfUsers);
+        Assert.assertEquals(100, resultOfNumberOfPosts);
         Assert.assertEquals(0, resultOfNumberOfComments);
-        Assert.assertEquals(33.0, resultOfAverageNumberOfPostsPerUser);
-        Assert.assertEquals(0.0, resultOfAverageNumberOfCommentsPerUser);
-        Assert.assertEquals(0.0, resultOfAverageNumberOfCommentsPerPost);
+        Assert.assertEquals(50, resultOfAverageNumberOfPostsPerUser,0);
+        Assert.assertEquals(0.0, resultOfAverageNumberOfCommentsPerUser,0);
+        Assert.assertEquals(0.0, resultOfAverageNumberOfCommentsPerPost,0);
 
 
     }
@@ -152,10 +150,9 @@ public class StatisticsCalculatorTestSuite {
         List<String> listOfUsers = new ArrayList<>();
         listOfUsers.add("Vertar");
         listOfUsers.add("Vertar");
-        listOfUsers.add("Vertar");
 
-        int numberOfPosts = 33;
-        int numberOfComments = 999;
+        int numberOfPosts = 50;
+        int numberOfComments = 100;
 
         when(statisticsMock.usersNames()).thenReturn(listOfUsers);
         when(statisticsMock.postsCount()).thenReturn(numberOfPosts);
@@ -168,17 +165,17 @@ public class StatisticsCalculatorTestSuite {
         int resultOfNumberOfUsers = statisticsCalculator.getNumberOfUsers();
         int resultOfNumberOfPosts = statisticsCalculator.getNumberOfPosts();
         int resultOfNumberOfComments = statisticsCalculator.getNumberOfComments();
-        Object resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
-        Object resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
-        Object resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
+        double resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
+        double resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
+        double resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
 
         //Then
-        Assert.assertEquals(3, resultOfNumberOfUsers);
-        Assert.assertEquals(33, resultOfNumberOfPosts);
-        Assert.assertEquals(999, resultOfNumberOfComments);
-        Assert.assertEquals(33.0 / 3, resultOfAverageNumberOfPostsPerUser);
-        Assert.assertEquals(333.0, resultOfAverageNumberOfCommentsPerUser);
-        Assert.assertEquals(999.0 / 33, resultOfAverageNumberOfCommentsPerPost);
+        Assert.assertEquals(2, resultOfNumberOfUsers);
+        Assert.assertEquals(50, resultOfNumberOfPosts);
+        Assert.assertEquals(100, resultOfNumberOfComments);
+        Assert.assertEquals(25, resultOfAverageNumberOfPostsPerUser,0);
+        Assert.assertEquals(50, resultOfAverageNumberOfCommentsPerUser,0);
+        Assert.assertEquals(2, resultOfAverageNumberOfCommentsPerPost,0);
     }
 
     @Test
@@ -189,10 +186,10 @@ public class StatisticsCalculatorTestSuite {
         List<String> listOfUsers = new ArrayList<>();
         listOfUsers.add("Vertar");
         listOfUsers.add("Vertar");
-        listOfUsers.add("Vertar");
 
-        int numberOfPosts = 121;
-        int numberOfComments = 25;
+
+        int numberOfPosts = 120;
+        int numberOfComments = 60;
 
         when(statisticsMock.usersNames()).thenReturn(listOfUsers);
         when(statisticsMock.postsCount()).thenReturn(numberOfPosts);
@@ -205,17 +202,17 @@ public class StatisticsCalculatorTestSuite {
         int resultOfNumberOfUsers = statisticsCalculator.getNumberOfUsers();
         int resultOfNumberOfPosts = statisticsCalculator.getNumberOfPosts();
         int resultOfNumberOfComments = statisticsCalculator.getNumberOfComments();
-        Object resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
-        Object resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
-        Object resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
+        double resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
+        double resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
+        double resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
 
         //Then
-        Assert.assertEquals(3, resultOfNumberOfUsers);
-        Assert.assertEquals(121, resultOfNumberOfPosts);
-        Assert.assertEquals(25, resultOfNumberOfComments);
-        Assert.assertEquals(121.0 / 3, resultOfAverageNumberOfPostsPerUser);
-        Assert.assertEquals(25.0 / 3, resultOfAverageNumberOfCommentsPerUser);
-        Assert.assertEquals(25.0 / 121, resultOfAverageNumberOfCommentsPerPost);
+        Assert.assertEquals(2, resultOfNumberOfUsers);
+        Assert.assertEquals(120, resultOfNumberOfPosts);
+        Assert.assertEquals(60, resultOfNumberOfComments);
+        Assert.assertEquals(60, resultOfAverageNumberOfPostsPerUser,0);
+        Assert.assertEquals(30, resultOfAverageNumberOfCommentsPerUser,0);
+        Assert.assertEquals(0.5, resultOfAverageNumberOfCommentsPerPost,0);
     }
 
     @Test
@@ -225,7 +222,7 @@ public class StatisticsCalculatorTestSuite {
 
         List<String> listOfUsers = new ArrayList<>();
 
-        int numberOfPosts = 92;
+        int numberOfPosts = 100;
         int numberOfComments = 25;
 
         when(statisticsMock.usersNames()).thenReturn(listOfUsers);
@@ -239,17 +236,17 @@ public class StatisticsCalculatorTestSuite {
         int resultOfNumberOfUsers = statisticsCalculator.getNumberOfUsers();
         int resultOfNumberOfPosts = statisticsCalculator.getNumberOfPosts();
         int resultOfNumberOfComments = statisticsCalculator.getNumberOfComments();
-        Object resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
-        Object resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
-        Object resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
+        double resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
+        double resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
+        double resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
 
         //Then
         Assert.assertEquals(0, resultOfNumberOfUsers);
-        Assert.assertEquals(92, resultOfNumberOfPosts);
+        Assert.assertEquals(100, resultOfNumberOfPosts);
         Assert.assertEquals(25, resultOfNumberOfComments);
-        Assert.assertEquals(false, resultOfAverageNumberOfPostsPerUser);
-        Assert.assertEquals(false, resultOfAverageNumberOfCommentsPerUser);
-        Assert.assertEquals(25.0 / 92, resultOfAverageNumberOfCommentsPerPost);
+        Assert.assertEquals(0, resultOfAverageNumberOfPostsPerUser,0);
+        Assert.assertEquals(0, resultOfAverageNumberOfCommentsPerUser,0);
+        Assert.assertEquals(0.25, resultOfAverageNumberOfCommentsPerPost,0);
     }
 
     @Test
@@ -273,7 +270,7 @@ public class StatisticsCalculatorTestSuite {
 
 
         int numberOfPosts = 25;
-        int numberOfComments = 42;
+        int numberOfComments = 50;
 
         when(statisticsMock.usersNames()).thenReturn(listOfUsers);
         when(statisticsMock.postsCount()).thenReturn(numberOfPosts);
@@ -286,16 +283,16 @@ public class StatisticsCalculatorTestSuite {
         int resultOfNumberOfUsers = statisticsCalculator.getNumberOfUsers();
         int resultOfNumberOfPosts = statisticsCalculator.getNumberOfPosts();
         int resultOfNumberOfComments = statisticsCalculator.getNumberOfComments();
-        Object resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
-        Object resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
-        Object resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
+        double resultOfAverageNumberOfPostsPerUser = statisticsCalculator.getAverageNumberOfPostsPerUser();
+        double resultOfAverageNumberOfCommentsPerUser = statisticsCalculator.getAverageNumberOfCommentsPerUser();
+        double resultOfAverageNumberOfCommentsPerPost = statisticsCalculator.getAverageNumberOfCommentsPerPost();
 
         //Then
         Assert.assertEquals(100, resultOfNumberOfUsers);
         Assert.assertEquals(25, resultOfNumberOfPosts);
-        Assert.assertEquals(42, resultOfNumberOfComments);
-        Assert.assertEquals(0.25, resultOfAverageNumberOfPostsPerUser);
-        Assert.assertEquals(0.42, resultOfAverageNumberOfCommentsPerUser);
-        Assert.assertEquals(42.0 / 25, resultOfAverageNumberOfCommentsPerPost);
+        Assert.assertEquals(50, resultOfNumberOfComments);
+        Assert.assertEquals(0.25, resultOfAverageNumberOfPostsPerUser,0);
+        Assert.assertEquals(0.50, resultOfAverageNumberOfCommentsPerUser,0);
+        Assert.assertEquals(2.0, resultOfAverageNumberOfCommentsPerPost,0);
     }
 }
