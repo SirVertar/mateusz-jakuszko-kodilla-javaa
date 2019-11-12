@@ -14,17 +14,17 @@ public class StatisticsCalculator {
         numberOfPosts = statistics.postsCount();
         numberOfComments = statistics.commentsCount();
         if (numberOfUsers > 0) {
-            averageNumberOfPostsPerUser = (double) numberOfPosts / numberOfUsers;
+            averageNumberOfPostsPerUser =  (double)numberOfPosts / numberOfUsers;
         } else {
             System.out.println("Sth wrong...probably there isn't any USERS");
         }
         if (numberOfUsers > 0) {
-            averageNumberOfCommentsPerUser = (double) numberOfComments / numberOfUsers;
+            averageNumberOfCommentsPerUser =  (double)numberOfComments / numberOfUsers;
         } else {
             System.out.println("Sth wrong...probably there isn't any USERS");
         }
         if (numberOfPosts > 0) {
-            averageNumberOfCommentsPerPost = (double) numberOfComments / numberOfPosts;
+            averageNumberOfCommentsPerPost = (double)numberOfComments / numberOfPosts;
         } else {
             System.out.println("Sth wrong...probably there isn't any posts");
         }
