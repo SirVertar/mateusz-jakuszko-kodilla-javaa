@@ -9,7 +9,7 @@ public final class Forum {
 
     public Forum() {
         ForumUser forumUser1 = new ForumUser(1, "Mateusz", 'M',
-                LocalDate.of(1996, 12, 2), 12);
+                LocalDate.of(1999,11,13 ), 12);
         ForumUser forumUser2 = new ForumUser(2, "Weronika", 'F',
                 LocalDate.of(1995, 1, 10), 4);
         ForumUser forumUser3 = new ForumUser(3, "Beata", 'F',
