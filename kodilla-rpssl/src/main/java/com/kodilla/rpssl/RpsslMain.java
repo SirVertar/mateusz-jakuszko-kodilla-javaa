@@ -3,16 +3,17 @@ package com.kodilla.rpssl;
 public class RpsslMain {
     public static void main(String[] args) {
 
-        WhichGame whichGame = new WhichGame();
-        whichGame.indicateGame();
+        WhatIsTypeOfGame whatIsTypeOfGame = new WhatIsTypeOfGame();
+        whatIsTypeOfGame.indicateGame();
 
         WhoArePlayers whoArePlayers = new WhoArePlayers();
-        whoArePlayers.indicatePlayers(whichGame.getGameRule());
+        whoArePlayers.indicatePlayers(whatIsTypeOfGame.getGameRule());
 
-        whichGame.getGameRule().setPlayers(whoArePlayers.getPlayer1(), whoArePlayers.getPlayer2());
+        GameController gameController = new GameController(
+                whoArePlayers.getPlayer1(),
+                whoArePlayers.getPlayer2(),
+                whatIsTypeOfGame.getGameRule());
 
-        GameController gameController = new GameController(whoArePlayers.getPlayer1(), whoArePlayers.getPlayer2());
-        gameController.startGame(whichGame.getGameRule());
-
+        gameController.startGame();
     }
 }

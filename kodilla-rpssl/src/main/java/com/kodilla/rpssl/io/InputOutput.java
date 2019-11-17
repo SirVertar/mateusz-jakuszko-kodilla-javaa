@@ -1,20 +1,82 @@
 package com.kodilla.rpssl.io;
 
+import com.kodilla.rpssl.GameRule;
+import com.kodilla.rpssl.RpsslMain;
 
 
-import com.kodilla.rpssl.*;
-
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputOutput {
+
+    private static Scanner input = new Scanner(System.in);
+    private static List<String> correctRpsslInput = Arrays.asList("0", "1", "2", "3", "4", "x", "r");
+    private static List<String> correctRpsInput = Arrays.asList("0", "1", "2", "x", "r");
+
+    static public int getPlayerRpsslMove() {
+        boolean isCorrect = false;
+        String temporaryInput = null;
+        do {
+            temporaryInput = input.nextLine();
+            if (correctRpsslInput.contains(temporaryInput)) {
+                isCorrect = true;
+            } else {
+                System.out.println("You didn't give correct symbol. Try again...");
+                isCorrect = false;
+            }
+
+        } while (!isCorrect);
+
+        switch (temporaryInput) {
+            case "0":
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+                return Integer.parseInt(temporaryInput);
+            case "x":
+                System.exit(0);
+            case "r":
+                RpsslMain.main(null);
+        }
+        return -1;
+    }
+
+    static public int getPlayerRpsMove() {
+        boolean isCorrect = false;
+        String temporaryInput = null;
+        do {
+            temporaryInput = input.nextLine();
+            if (correctRpsInput.contains(temporaryInput)) {
+                isCorrect = true;
+            } else {
+                System.out.println("You didn't give correct symbol. Try again...");
+                isCorrect = false;
+            }
+
+        } while (!isCorrect);
+
+        switch (temporaryInput) {
+            case "0":
+            case "1":
+            case "2":
+                return Integer.parseInt(temporaryInput);
+            case "x":
+                System.exit(0);
+            case "r":
+                RpsslMain.main(null);
+        }
+        return -1;
+    }
+
 
     static public int intInput(int start, int end) {
         boolean error = true;
         int choose = 99;
         do {
             try {
-                Scanner input = new Scanner(System.in);
                 choose = input.nextInt();
                 input.nextLine();
                 if (choose > end || choose < start) {
@@ -34,7 +96,6 @@ public class InputOutput {
         int choose = 99;
         do {
             try {
-                Scanner input = new Scanner(System.in);
                 choose = input.nextInt();
                 input.nextLine();
                 if (choose > 2 || choose < 0) {
@@ -56,16 +117,15 @@ public class InputOutput {
 
     static public void printOption(GameRule gameRule) {
         System.out.println("Choose one of the option below: ");
-        if (gameRule instanceof RpsGameRule) {
+        if (gameRule.getRULES().length == 3) {
             for (OptionsOfRPS option : OptionsOfRPS.values()) {
                 System.out.println(option.getOption() + " - " + option.getOptionExplanation());
             }
-        } else if (gameRule instanceof RpsslGameRule) {
+        } else if (gameRule.getRULES().length == 5) {
             for (OptionsOfRPSLS option : OptionsOfRPSLS.values()) {
                 System.out.println(option.getOption() + " - " + option.getOptionExplanation());
             }
         }
-
     }
 
     static public void printKindsOfPlayers() {
@@ -133,26 +193,25 @@ public class InputOutput {
     }
 
 
-
-
-
     public enum OptionsOfRPSLS {
 
-        PAPER(0, "Choose paper"), ROCK(1, "Choose rock"),
-        SCISSORS(2, "Choose scissors"), LIZARD(3,"Choose Lizard"),
-        SPOCK(4,"Choose Spock"), EXIT(5, "Exit game"),
-        STARTNEWGAME(6, "Start next game");
+        PAPER("0", "Choose paper"), ROCK("1", "Choose rock"),
+        SCISSORS("2", "Choose scissors"), LIZARD("3", "Choose Lizard"),
+        SPOCK("4", "Choose Spock"), EXIT("X", "Exit game"),
+        STARTNEWGAME("r", "Start next game");
 
-        private int option;
+        private String option;
         private String optionExplanation;
 
-        OptionsOfRPSLS(int option, String optionExplanation) {
+        OptionsOfRPSLS(String option, String optionExplanation) {
             this.option = option;
             this.optionExplanation = optionExplanation;
         }
-        public int getOption() {
+
+        public String getOption() {
             return option;
         }
+
         public String getOptionExplanation() {
             return optionExplanation;
         }
@@ -160,19 +219,19 @@ public class InputOutput {
 
     public enum OptionsOfRPS {
 
-        PAPER(0, "Choose paper"), ROCK(1, "Choose rock"),
-        SCISSORS(2, "Choose scissors"),  EXIT(3, "Exit game"),
-        STARTNEWGAME(4, "Start next game");
+        PAPER("0", "Choose paper"), ROCK("1", "Choose rock"),
+        SCISSORS("2", "Choose scissors"), EXIT("x", "Exit game"),
+        STARTNEWGAME("r", "Start next game");
 
-        private int option;
+        private String option;
         private String optionExplanation;
 
-        OptionsOfRPS(int option, String optionExplanation) {
+        OptionsOfRPS(String option, String optionExplanation) {
             this.option = option;
             this.optionExplanation = optionExplanation;
         }
 
-        public int getOption() {
+        public String getOption() {
             return option;
         }
 
@@ -203,7 +262,6 @@ public class InputOutput {
         }
     }
 
-
     public enum KindsOfGames {
         PRS(0, "Paper, rock and scissors "),
         PRSLS(1, "Paper, rock, scissors, lizard and spock ");
@@ -223,6 +281,4 @@ public class InputOutput {
             return optionExplanation;
         }
     }
-
 }
-

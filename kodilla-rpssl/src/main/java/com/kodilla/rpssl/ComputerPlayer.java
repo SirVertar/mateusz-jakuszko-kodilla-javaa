@@ -4,22 +4,20 @@ import java.util.Random;
 
 public class ComputerPlayer extends Player {
 
-    public ComputerPlayer(String name, GameRule gameRule) {
-        super(name, gameRule);
+    public ComputerPlayer(String name) {
+        super(name);
     }
 
     @Override
-    public int makeMove() {
-        if (getGameRule() instanceof RpsslGameRule) {
-            Random random = new Random();
-            playerChoose = random.nextInt(5);
-            return playerChoose;
-        } else if (getGameRule() instanceof RpsGameRule) {
-            Random random = new Random();
-            playerChoose = random.nextInt(3);
-            return playerChoose;
-        } else {
-            return 99;
-        }
+    public String makeRpsMove() {
+        Random random = new Random();
+        return String.valueOf(random.nextInt(3));
     }
+
+    @Override
+    public String makeRpsslMove() {
+        Random random = new Random();
+        return String.valueOf(random.nextInt(5));
+    }
+
 }

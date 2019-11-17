@@ -1,17 +1,6 @@
 package com.kodilla.rpssl;
 
-public class RpsGameRule implements GameRule {
-    private Player player1;
-    private Player player2;
-
-    public RpsGameRule() {
-    }
-
-    @Override
-    public void setPlayers(Player player1, Player player2) {
-        this.player1 = player1;
-        this.player2 = player2;
-    }
+public class RpsGameRule extends GameRule {
 
     private final static int[][] RULES = {
             {0, -1, 1},
@@ -20,12 +9,19 @@ public class RpsGameRule implements GameRule {
     };
 
     @Override
-    public void whoWin(int firstChoose, int secondChoose) {
-        int temporaryResult = RULES[secondChoose][firstChoose];
+    int whoWin(String firstChoose, String secondChoose) {
+        int temporaryResult = RULES[Integer.parseInt(secondChoose)][Integer.parseInt(firstChoose)];
         if (temporaryResult == 1) {
-            player1.addPoint();
+            return 1;
         } else if (temporaryResult == -1) {
-            player2.addPoint();
+            return 2;
+        } else {
+            return 0;
         }
+    }
+
+    @Override
+    public int[][] getRULES() {
+        return RULES;
     }
 }

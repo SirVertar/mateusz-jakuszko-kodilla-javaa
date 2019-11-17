@@ -4,20 +4,14 @@ public abstract class Player {
 
     private String name;
     private int score = 0;
-    int playerChoose;
-    private GameRule gameRule;
 
-
-    Player(String name, GameRule gameRule) {
+    Player(String name) {
         this.name = name;
-        this.gameRule = gameRule;
     }
 
-    public abstract int makeMove();
+    public abstract String makeRpsMove();
 
-    public int makeMove(int choice) {
-        return 0;
-    }
+    public abstract String makeRpsslMove();
 
     void addPoint() {
         score += 1;
@@ -33,17 +27,5 @@ public abstract class Player {
 
     int getScore() {
         return score;
-    }
-
-    void setScore(int score) {
-        this.score = score;
-    }
-
-    GameRule getGameRule() {
-        return gameRule;
-    }
-
-    int getPlayerChoose() {
-        return playerChoose;
     }
 }

@@ -4,22 +4,17 @@ import static com.kodilla.rpssl.io.InputOutput.*;
 
 public class HumanPlayer extends Player {
 
-
-    HumanPlayer(String name, GameRule gameRule) {
-        super(name, gameRule);
+    HumanPlayer(String name) {
+        super(name);
     }
 
     @Override
-    public int makeMove() {
-        if (getGameRule() instanceof RpsslGameRule) {
-            playerChoose = intInput(0, 6);
-            return playerChoose;
-        } else if (getGameRule() instanceof RpsGameRule) {
-            playerChoose = intInput(0, 4);
-            return playerChoose;
-        } else {
-            printSomethingWrong();
-            return 99;
-        }
+    public String makeRpsslMove() {
+        return String.valueOf(getPlayerRpsslMove());
+    }
+
+    @Override
+    public String makeRpsMove() {
+        return String.valueOf(getPlayerRpsMove());
     }
 }

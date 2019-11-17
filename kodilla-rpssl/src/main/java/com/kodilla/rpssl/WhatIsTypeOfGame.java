@@ -1,12 +1,13 @@
 package com.kodilla.rpssl;
 
+
 import static com.kodilla.rpssl.io.InputOutput.*;
 
-class WhichGame {
+class WhatIsTypeOfGame {
     private GameRule gameRule;
     private boolean exit = false;
 
-    WhichGame() {
+    WhatIsTypeOfGame() {
     }
 
     void indicateGame() {

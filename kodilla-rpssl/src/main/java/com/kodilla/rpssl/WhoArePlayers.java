@@ -1,5 +1,6 @@
 package com.kodilla.rpssl;
 
+
 import static com.kodilla.rpssl.io.InputOutput.*;
 
 class WhoArePlayers {
@@ -14,13 +15,13 @@ class WhoArePlayers {
 
         switch (firstChoice) {
             case 0:
-                player1 = new ComputerPlayer("Computer", gameRule);
+                player1 = new ComputerPlayer("Computer");
                 break;
             case 1:
-                player1 = new CheatingComputerPlayer("Cheating computer", gameRule);
+                player1 = new CheatingComputerPlayer("Cheating computer");
                 break;
             case 2:
-                player1 = new HumanPlayer("Player", gameRule);
+                player1 = new HumanPlayer("Player");
                 printChooseTheIPlayerName();
                 String firstPlayerName = stringInput();
                 player1.setName(firstPlayerName);
@@ -32,22 +33,23 @@ class WhoArePlayers {
 
         switch (secondChoice) {
             case 0:
-                player2 = new ComputerPlayer("Computer", gameRule);
+                player2 = new ComputerPlayer("Computer");
                 break;
             case 1:
-                player2 = new CheatingComputerPlayer("Cheating computer", gameRule);
+                player2 = new CheatingComputerPlayer("Cheating computer");
                 break;
             case 2:
-                player2 = new HumanPlayer("Player", gameRule);
+                player2 = new HumanPlayer("Player");
                 printChooseTheIIPlayerName();
-                String secondPlayerName = stringInput();
-                player2.setName(secondPlayerName);
+                String firstPlayerName = stringInput();
+                player2.setName(firstPlayerName);
                 break;
             default:
                 printSomethingWrong();
                 break;
         }
     }
+
 
     Player getPlayer1() {
         return player1;

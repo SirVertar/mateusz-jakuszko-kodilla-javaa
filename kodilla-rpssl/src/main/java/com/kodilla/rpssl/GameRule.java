@@ -1,8 +1,11 @@
 package com.kodilla.rpssl;
 
-public interface GameRule {
+public abstract class GameRule {
 
-    void whoWin(int firstChoose, int secondChoose);
+    private final static int[][] RULES = {};
 
-    void setPlayers(Player player1, Player player2);
+    abstract int whoWin(String firstChoose, String secondChoose);
+
+    abstract public int[][] getRULES();
+
 }
