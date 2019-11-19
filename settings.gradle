@@ -1,4 +1,5 @@
 rootProject.name = 'kodilla-course'
 include 'kodilla-testing'
 include 'kodilla-rpssl'
+include 'kodilla-exception'
 
