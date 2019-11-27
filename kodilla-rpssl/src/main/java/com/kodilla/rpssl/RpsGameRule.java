@@ -21,7 +21,7 @@ public class RpsGameRule extends GameRule {
     }
 
     @Override
-    public int[][] getRULES() {
+    public int[][] getRules() {
         return RULES;
     }
 }

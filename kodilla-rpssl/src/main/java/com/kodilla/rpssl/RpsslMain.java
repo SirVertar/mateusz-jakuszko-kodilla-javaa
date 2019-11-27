@@ -1,19 +1,24 @@
 package com.kodilla.rpssl;
 
+import static com.kodilla.rpssl.io.InputOutput.OptionsOfRPSLS.PAPER;
+import static com.kodilla.rpssl.io.InputOutput.getChoiceFromInt;
+
 public class RpsslMain {
     public static void main(String[] args) {
 
-        WhatIsTypeOfGame whatIsTypeOfGame = new WhatIsTypeOfGame();
-        whatIsTypeOfGame.indicateGame();
+        TypeOfGameCreator typeOfGameCreator = new TypeOfGameCreator();
+        typeOfGameCreator.indicateGame();
 
-        WhoArePlayers whoArePlayers = new WhoArePlayers();
-        whoArePlayers.indicatePlayers(whatIsTypeOfGame.getGameRule());
+        PlayersCreator playersCreator = new PlayersCreator();
+        playersCreator.indicatePlayers();
 
         GameController gameController = new GameController(
-                whoArePlayers.getPlayer1(),
-                whoArePlayers.getPlayer2(),
-                whatIsTypeOfGame.getGameRule());
+                playersCreator.getPlayer1(),
+                playersCreator.getPlayer2(),
+                typeOfGameCreator.getGameRule());
 
         gameController.startGame();
+
+
     }
 }

@@ -3,18 +3,20 @@ package com.kodilla.rpssl;
 public abstract class Player {
 
     private String name;
-    private int score = 0;
+    private int score;
 
     Player(String name) {
         this.name = name;
     }
 
-    public abstract String makeRpsMove();
+    abstract String makeRpsMove();
 
-    public abstract String makeRpsslMove();
+    abstract String makeRpsslMove();
+
+    abstract KindsOfPlayers getKindOfPlayer();
 
     void addPoint() {
-        score += 1;
+        score++;
     }
 
     void setName(String name) {
@@ -28,4 +30,6 @@ public abstract class Player {
     int getScore() {
         return score;
     }
+
+
 }

@@ -3,11 +3,11 @@ package com.kodilla.rpssl;
 
 import static com.kodilla.rpssl.io.InputOutput.*;
 
-class WhoArePlayers {
+class PlayersCreator {
     private Player player1;
     private Player player2;
 
-    void indicatePlayers(GameRule gameRule) {
+    void indicatePlayers() {
         printKindsOfPlayers();
         int firstChoice = intInputPlayer();
         printSecondPlayerRequest();
@@ -50,7 +50,6 @@ class WhoArePlayers {
         }
     }
 
-
     Player getPlayer1() {
         return player1;
     }
@@ -58,4 +57,6 @@ class WhoArePlayers {
     Player getPlayer2() {
         return player2;
     }
+
+
 }

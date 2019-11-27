@@ -2,9 +2,13 @@ package com.kodilla.rpssl;
 
 import java.util.Random;
 
+import static com.kodilla.rpssl.KindsOfPlayers.*;
+
 public class CheatingComputerPlayer extends Player {
 
     private int anotherPlayerChoice;
+    private Random random = new Random();
+    private KindsOfPlayers kindOfPlayer = CHEATINGCOMUPTER;
 
     CheatingComputerPlayer(String name) {
         super(name);
@@ -16,7 +20,6 @@ public class CheatingComputerPlayer extends Player {
 
     @Override
     public String makeRpsslMove() {
-        Random random = new Random();
         int temporaryNumber = random.nextInt(100);
         if (temporaryNumber > 50) {
             if (anotherPlayerChoice == 0) {
@@ -35,7 +38,6 @@ public class CheatingComputerPlayer extends Player {
 
     @Override
     public String makeRpsMove() {
-        Random random = new Random();
         int temporaryNumber = random.nextInt(100);
         if (temporaryNumber > 50) {
             if (anotherPlayerChoice == 0) {
@@ -48,6 +50,11 @@ public class CheatingComputerPlayer extends Player {
         } else {
             return String.valueOf(random.nextInt(3));
         }
+    }
+
+    @Override
+    KindsOfPlayers getKindOfPlayer() {
+        return kindOfPlayer;
     }
 }
 

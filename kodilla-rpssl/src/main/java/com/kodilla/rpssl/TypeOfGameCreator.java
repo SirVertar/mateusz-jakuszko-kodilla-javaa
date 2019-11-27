@@ -3,11 +3,11 @@ package com.kodilla.rpssl;
 
 import static com.kodilla.rpssl.io.InputOutput.*;
 
-class WhatIsTypeOfGame {
+class TypeOfGameCreator {
     private GameRule gameRule;
     private boolean exit = false;
 
-    WhatIsTypeOfGame() {
+    TypeOfGameCreator() {
     }
 
     void indicateGame() {
@@ -25,7 +25,7 @@ class WhatIsTypeOfGame {
                     break;
                 default:
                     printSomethingWrong();
-                    break;
+                    intInput(0,1);
             }
         } while (!exit);
     }

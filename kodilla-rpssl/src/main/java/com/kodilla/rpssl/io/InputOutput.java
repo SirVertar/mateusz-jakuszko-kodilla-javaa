@@ -1,6 +1,7 @@
 package com.kodilla.rpssl.io;
 
 import com.kodilla.rpssl.GameRule;
+import com.kodilla.rpssl.KindsOfPlayers;
 import com.kodilla.rpssl.RpsslMain;
 
 
@@ -74,17 +75,17 @@ public class InputOutput {
 
     static public int intInput(int start, int end) {
         boolean error = true;
-        int choose = 99;
+        int choose = -1;
         do {
             try {
                 choose = input.nextInt();
-                input.nextLine();
                 if (choose > end || choose < start) {
                     System.out.println("You didn't give int from given choices above");
                 } else {
                     error = false;
                 }
             } catch (InputMismatchException exception) {
+                input.nextLine();
                 System.out.println("You didn't give an int...Try Again");
             }
         } while (error);
@@ -93,17 +94,17 @@ public class InputOutput {
 
     static public int intInputPlayer() {
         boolean error = true;
-        int choose = 99;
+        int choose = -1;
         do {
             try {
                 choose = input.nextInt();
-                input.nextLine();
                 if (choose > 2 || choose < 0) {
                     System.out.println("You didn't give integer from given choices above");
                 } else {
                     error = false;
                 }
             } catch (InputMismatchException exception) {
+                input.nextLine();
                 System.out.println("You didn't give an int...Try Again");
             }
         } while (error);
@@ -112,16 +113,17 @@ public class InputOutput {
 
     static public String stringInput() {
         Scanner input = new Scanner(System.in);
-        return input.nextLine();
+        String word = input.nextLine();
+        return word;
     }
 
     static public void printOption(GameRule gameRule) {
         System.out.println("Choose one of the option below: ");
-        if (gameRule.getRULES().length == 3) {
+        if (gameRule.getRules().length == 3) {
             for (OptionsOfRPS option : OptionsOfRPS.values()) {
                 System.out.println(option.getOption() + " - " + option.getOptionExplanation());
             }
-        } else if (gameRule.getRULES().length == 5) {
+        } else if (gameRule.getRules().length == 5) {
             for (OptionsOfRPSLS option : OptionsOfRPSLS.values()) {
                 System.out.println(option.getOption() + " - " + option.getOptionExplanation());
             }
@@ -146,37 +148,21 @@ public class InputOutput {
         System.out.println("Choose the second kind of player...");
     }
 
-    static public void printPlayerChoose(int choose, String name) {
-        if (choose == 0) {
-            System.out.println(name + " picks a paper");
-        } else if (choose == 1) {
-            System.out.println(name + " picks a rock");
-        } else if (choose == 2) {
-            System.out.println(name + " picks a scissors");
-        } else if (choose == 3) {
-            System.out.println(name + " picks a lizard");
-        } else if (choose == 4) {
-            System.out.println(name + " picks a Spock");
-        }
-    }
-
     public static void printResult(int gamersReuslult, String firstName, int computerResult, String secondName) {
-        if (firstName == null) firstName = "Player I";
-        if (secondName == null) secondName = "Player II";
-        System.out.println("\n" + "RESULT: " + firstName + " - " + gamersReuslult + "  vs  " + secondName + " - " + computerResult + "\n");
-    }
+        if (firstName == null) {
+            firstName = "Player I";
+        }
+        if (secondName == null) {
+            secondName = "Player II";
+        }
+        System.out.println("\n" + "RESULT: " + firstName + " - " + gamersReuslult + "  vs  " + secondName + " - " +
+                computerResult + "\n");
 
-    static public void printGoodbye() {
-        System.out.println("Bye, and see You later:)");
     }
 
     static public void printSomethingWrong() {
         System.out.println("There is sth wrong... probably u gave a wrong number, try again or u've chosen a " +
                 "computer vs computer... Try again by run app again");
-    }
-
-    static public void printStartNewGame() {
-        System.out.println("Ok, so... Let's start a new GAME!! :)");
     }
 
     static public void printPlayerMoveInformation(String name) {
@@ -192,6 +178,31 @@ public class InputOutput {
         System.out.println("Please choose the II player name...");
     }
 
+    static public void printPlayersChoices(String firstPlayerName, String secondPlayerName, int firstResult, int secondResult) {
+        System.out.println(
+                "The " + firstPlayerName + " choice is: " + getChoiceFromInt(firstResult) + "\n" +
+                        "The " + secondPlayerName + " choice is: " + getChoiceFromInt(secondResult)
+        );
+    }
+
+    static public String getChoiceFromInt (int choice) {
+        switch (choice) {
+            case 0:
+                return "Paper";
+            case 1:
+                return "Rock";
+            case 2:
+                return "Scissors";
+            case 3:
+                return "Lizard";
+            default:
+                return "Spock";
+        }
+    }
+
+    static public void eatLine() {
+        input.nextLine();
+    }
 
     public enum OptionsOfRPSLS {
 
@@ -215,6 +226,7 @@ public class InputOutput {
         public String getOptionExplanation() {
             return optionExplanation;
         }
+
     }
 
     public enum OptionsOfRPS {
@@ -239,27 +251,6 @@ public class InputOutput {
             return optionExplanation;
         }
 
-    }
-
-    public enum KindsOfPlayers {
-        RANDOMCOMPUTER(0, "Computer with random choose"),
-        CHEATINGCOMUPTER(1, "Choose which can cheat a little "),
-        PLAYER(2, "Human player");
-        private int option;
-        private String optionExplanation;
-
-        KindsOfPlayers(int option, String optionExplanation) {
-            this.option = option;
-            this.optionExplanation = optionExplanation;
-        }
-
-        public int getOption() {
-            return option;
-        }
-
-        public String getOptionExplanation() {
-            return optionExplanation;
-        }
     }
 
     public enum KindsOfGames {
