@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges;
 
 class ComputerMouse extends ElectricityProduct {
 
-    public ComputerMouse(double price, String nameOfProduct) {
-        super(price, nameOfProduct);
+    ComputerMouse(String nameOfProduct, double price, Integer productId, Integer productQuantity) {
+        super(nameOfProduct, price, productId, productQuantity);
     }
 }

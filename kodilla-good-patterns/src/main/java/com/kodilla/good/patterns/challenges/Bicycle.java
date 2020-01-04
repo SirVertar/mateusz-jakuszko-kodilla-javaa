@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges;
 
 class Bicycle extends SportProduct {
 
-    public Bicycle(double price, String nameOfProduct) {
-        super(price, nameOfProduct);
+    Bicycle(String nameOfProduct, double price, Integer productId, Integer productQuantity) {
+        super(nameOfProduct, price, productId, productQuantity);
     }
 }

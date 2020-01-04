@@ -12,17 +12,17 @@ class ProductOrderService {
         this.informationService = informationService;
     }
 
-    OrderDto process(final OrderRequest orderRequest) {
-        boolean isOrdered = orderChecker.order(orderRequest.getUser(), orderRequest.getListOfOrderedProducts(), orderRequest.getOrderedAt());
+    OrderDto process(final OrderRequest orderRequest, final ProductsDatabase productsDatabase, final UsersDatabase usersDatabase) {
+        boolean isOrdered = orderChecker.order(orderRequest, productsDatabase, usersDatabase);
         if (isOrdered) {
             informationService.sendConfirmationToUser(orderRequest.getUser());
-            orderRepository.order(orderRequest.getUser(), orderRequest.getListOfOrderedProducts(), orderRequest.getOrderedAt());
+            orderRepository.saveOrderIntoRepository(orderRequest);
             System.out.println("Your order is accepted!!");
             return new OrderDto(orderRequest.getUser(), orderRequest.getListOfOrderedProducts(), true);
-        } else {
-            System.out.println("Your order isn't accepted!!");
-            return new OrderDto(orderRequest.getUser(), orderRequest.getListOfOrderedProducts(), false);
         }
+        System.out.println("Your order isn't accepted!!");
+        return new OrderDto(orderRequest.getUser(), orderRequest.getListOfOrderedProducts(), false);
+
     }
 
 }

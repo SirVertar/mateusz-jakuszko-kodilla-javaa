@@ -5,5 +5,5 @@ import java.util.List;
 
 interface OrderChecker {
 
-    boolean order(User user, List<Product> listOfOrderedProducts, LocalDateTime orderedAt);
+    boolean order(OrderRequest orderRequest, ProductsDatabase productsDatabase, UsersDatabase usersDatabase);
 }

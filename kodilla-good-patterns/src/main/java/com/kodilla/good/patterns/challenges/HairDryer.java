@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges;
 
 class HairDryer extends ElectricityProduct {
 
-    public HairDryer(double price, String nameOfProduct) {
-        super(price, nameOfProduct);
+    public HairDryer(String nameOfProduct, double price, Integer productId, Integer productQuantity) {
+        super(nameOfProduct, price, productId, productQuantity);
     }
 }

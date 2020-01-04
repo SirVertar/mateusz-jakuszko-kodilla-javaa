@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface OrderRepository {
 
-    void order(User user, List<Product> listOfOrderedProducts, LocalDateTime orderedAt);
+    void saveOrderIntoRepository(OrderRequest orderRequest);
 }
