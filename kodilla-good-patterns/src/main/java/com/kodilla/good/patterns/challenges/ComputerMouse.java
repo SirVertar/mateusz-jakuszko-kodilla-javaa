@@ -1,4 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
-public interface ComputerMouse {
+class ComputerMouse extends ElectricityProduct {
+
+    public ComputerMouse(double price, String nameOfProduct) {
+        super(price, nameOfProduct);
+    }
 }

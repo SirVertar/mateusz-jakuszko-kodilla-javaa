@@ -1,4 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
-public interface FootballBall {
+class FootballBall extends SportProduct {
+
+    public FootballBall(double price, String nameOfProduct) {
+        super(price, nameOfProduct);
+    }
 }
