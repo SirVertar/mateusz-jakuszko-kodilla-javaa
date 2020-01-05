@@ -22,7 +22,6 @@ class ProductOrderService {
         }
         System.out.println("Your order isn't accepted!!");
         return new OrderDto(orderRequest.getUser(), orderRequest.getListOfOrderedProducts(), false);
-
     }
 
 }
