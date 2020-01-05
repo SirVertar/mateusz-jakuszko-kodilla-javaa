@@ -9,26 +9,22 @@ public class Flight {
     private Airlines airlines;
     private Integer flightId;
 
-    public Flight(City connectionFrom, City connectionTo, Airlines airlines, Integer flightId) {
+    Flight(City connectionFrom, City connectionTo, Airlines airlines, Integer flightId) {
         this.connectionFrom = connectionFrom;
         this.connectionTo = connectionTo;
         this.airlines = airlines;
         this.flightId = flightId;
     }
 
-    public City getConnectionFrom() {
+    City getConnectionFrom() {
         return connectionFrom;
     }
 
-    public City getConnectionTo() {
+    City getConnectionTo() {
         return connectionTo;
     }
 
-    public Airlines getAirlines() {
-        return airlines;
-    }
-
-    public Integer getFlightId() {
+    Integer getFlightId() {
         return flightId;
     }
 

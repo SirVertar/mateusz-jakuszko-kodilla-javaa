@@ -29,8 +29,5 @@ public class Main {
                 flightSearcher.searchDirectFlightsFromTo(City.WARSAW, City.BANGKOK));
         Printer.printFlightTableInList("____Flights with Connection from Poznan to Bangkok____",
                 flightSearcher.searchFlightsWithConnectionFromTo(City.POZNAN, City.BANGKOK));
-
-
-        ;
     }
 }

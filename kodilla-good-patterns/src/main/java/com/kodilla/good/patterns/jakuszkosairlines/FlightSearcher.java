@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.jakuszkosairlines;
 
-import com.kodilla.good.patterns.jakuszkosairlines.io.Printer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,25 +12,22 @@ public class FlightSearcher {
     }
 
     List<Flight> searchFlightsFrom(City city) {
-        List<Flight> temporaryListOfFlights = flightDatabase.getFlightMap().values().stream()
+        return flightDatabase.getFlightMap().values().stream()
                 .filter(e -> e.getConnectionFrom() == city)
                 .collect(Collectors.toList());
-        return temporaryListOfFlights;
     }
 
     List<Flight> searchFlightsTo(City city) {
-        List<Flight> temporaryListOfFlights = flightDatabase.getFlightMap().values().stream()
+        return flightDatabase.getFlightMap().values().stream()
                 .filter(e -> e.getConnectionTo() == city)
                 .collect(Collectors.toList());
-        return temporaryListOfFlights;
     }
 
     List<Flight> searchDirectFlightsFromTo(City cityFrom, City cityTo) {
-        List<Flight> directFlightsListOfFlights = flightDatabase.getFlightMap().values().stream()
+        return flightDatabase.getFlightMap().values().stream()
                 .filter(e -> e.getConnectionFrom() == cityFrom)
                 .filter(e -> e.getConnectionTo() == cityTo)
                 .collect(Collectors.toList());
-        return directFlightsListOfFlights;
     }
 
     List<Flight[]> searchFlightsWithConnectionFromTo(City cityFrom, City cityTo) {
