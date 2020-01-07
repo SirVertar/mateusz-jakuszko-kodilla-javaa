@@ -6,5 +6,5 @@ public enum City {
     POZNAN,
     WARSAW,
     BERLIN,
-    BANGKOK,
+    BANGKOK
 }

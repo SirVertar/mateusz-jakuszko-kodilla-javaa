@@ -24,10 +24,6 @@ public class Flight {
         return connectionTo;
     }
 
-    Integer getFlightId() {
-        return flightId;
-    }
-
     @Override
     public String toString() {
         return "connectionFrom:  " + connectionFrom +

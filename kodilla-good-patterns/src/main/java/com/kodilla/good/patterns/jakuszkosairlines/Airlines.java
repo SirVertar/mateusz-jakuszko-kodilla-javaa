@@ -4,5 +4,5 @@ public enum Airlines {
     LOT,
     QATAR,
     ETIHAD,
-    LUFTHANSA,
+    LUFTHANSA
 }

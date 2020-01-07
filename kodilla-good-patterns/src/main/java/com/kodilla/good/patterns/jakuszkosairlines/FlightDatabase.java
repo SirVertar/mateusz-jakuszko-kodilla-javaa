@@ -1,27 +1,18 @@
 package com.kodilla.good.patterns.jakuszkosairlines;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 class FlightDatabase {
 
-    Map<Integer, Flight> flightMap = new HashMap<>();
+    Set<Flight> flightSet = new HashSet<>();
 
     void addFlight(Flight... flights) {
-        int i = flightMap.size();
-        for (Flight flight : flights) {
-            if (flight != null) {
-                flightMap.put(flight.getFlightId(), flight);
-                i++;
-            }
-            if (flightMap.size() != i) {
-                System.out.println("You probably trying add the same flight into database");
-                i++;
-            }
-        }
+        flightSet.addAll(Arrays.asList(flights));
     }
 
-    Map<Integer, Flight> getFlightMap() {
-        return flightMap;
+        Set<Flight> getFlightSet () {
+            return flightSet;
+        }
     }
-}

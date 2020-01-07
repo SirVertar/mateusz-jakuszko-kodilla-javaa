@@ -12,19 +12,19 @@ public class FlightSearcher {
     }
 
     List<Flight> searchFlightsFrom(City city) {
-        return flightDatabase.getFlightMap().values().stream()
+        return flightDatabase.getFlightSet().stream()
                 .filter(e -> e.getConnectionFrom() == city)
                 .collect(Collectors.toList());
     }
 
     List<Flight> searchFlightsTo(City city) {
-        return flightDatabase.getFlightMap().values().stream()
+        return flightDatabase.getFlightSet().stream()
                 .filter(e -> e.getConnectionTo() == city)
                 .collect(Collectors.toList());
     }
 
     List<Flight> searchDirectFlightsFromTo(City cityFrom, City cityTo) {
-        return flightDatabase.getFlightMap().values().stream()
+        return flightDatabase.getFlightSet().stream()
                 .filter(e -> e.getConnectionFrom() == cityFrom)
                 .filter(e -> e.getConnectionTo() == cityTo)
                 .collect(Collectors.toList());

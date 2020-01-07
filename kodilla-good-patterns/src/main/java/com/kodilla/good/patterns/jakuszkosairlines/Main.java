@@ -15,9 +15,9 @@ public class Main {
         Flight flight9 = new Flight(City.WROCLAW, City.BANGKOK, Airlines.QATAR,9);
         Flight flight10 = new Flight(City.GDANSK, City.BANGKOK, Airlines.LUFTHANSA,10);
 
+
         FlightDatabase flightDatabase = new FlightDatabase();
         flightDatabase.addFlight(flight1, flight2, flight3, flight4, flight5, flight6, flight7, flight8, flight9, flight10);
-        System.out.println(flightDatabase.getFlightMap().size());
 
         FlightSearcher flightSearcher = new FlightSearcher(flightDatabase);
 

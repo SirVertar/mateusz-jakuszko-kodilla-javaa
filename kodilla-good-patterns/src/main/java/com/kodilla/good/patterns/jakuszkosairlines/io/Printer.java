@@ -25,8 +25,8 @@ public abstract class Printer {
         for (Flight[] flight : listOfFlight) {
             System.out.println("[ " + j + " ]   " + "CONNECTION: ");
             j++;
-            for (int i = 0; i < flight.length; i++) {
-                System.out.println(flight[i]);
+            for (Flight value : flight) {
+                System.out.println(value);
             }
         }
     }
