@@ -21,14 +21,10 @@ public class BoardTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);
         //When
-        boolean isThereDoneList = context.containsBean("doneList");
-        boolean isThereInProgressList = context.containsBean("inProgressList");
-        boolean isThereToDoList = context.containsBean("toDoList");
+        boolean isThereTaskList = context.containsBean("Task List");
         boolean isThereBoard = context.containsBean("getBoard");
         //Then
-        Assert.assertTrue(isThereDoneList);
-        Assert.assertTrue(isThereInProgressList);
-        Assert.assertTrue(isThereToDoList);
+        Assert.assertTrue(isThereTaskList);
         Assert.assertTrue(isThereBoard);
     }
 
@@ -72,12 +68,12 @@ public class BoardTestSuite {
         TaskList inProgressList = board.getInProgressList();
         TaskList toDoList = board.getToDoList();
         //Then
-        Assert.assertEquals("Clean bicycle", doneList.getTasks().get(doneList.getTasks().size()-2));
-        Assert.assertEquals("Clean house", doneList.getTasks().get(doneList.getTasks().size()-1));
-        Assert.assertEquals("Do notes", inProgressList.getTasks().get(inProgressList.getTasks().size()-2));
-        Assert.assertEquals("Clean car", inProgressList.getTasks().get(inProgressList.getTasks().size()-1));
-        Assert.assertEquals("Wash your hands", toDoList.getTasks().get(toDoList.getTasks().size()-3));
-        Assert.assertEquals("Go to Bangkok", toDoList.getTasks().get(toDoList.getTasks().size()-2));
-        Assert.assertEquals("Clean room", toDoList.getTasks().get(toDoList.getTasks().size()-1));
+        Assert.assertEquals("Clean bicycle", doneList.getTasks().get(doneList.getTasks().size() - 2));
+        Assert.assertEquals("Clean house", doneList.getTasks().get(doneList.getTasks().size() - 1));
+        Assert.assertEquals("Do notes", inProgressList.getTasks().get(inProgressList.getTasks().size() - 2));
+        Assert.assertEquals("Clean car", inProgressList.getTasks().get(inProgressList.getTasks().size() - 1));
+        Assert.assertEquals("Wash your hands", toDoList.getTasks().get(toDoList.getTasks().size() - 3));
+        Assert.assertEquals("Go to Bangkok", toDoList.getTasks().get(toDoList.getTasks().size() - 2));
+        Assert.assertEquals("Clean room", toDoList.getTasks().get(toDoList.getTasks().size() - 1));
     }
 }
