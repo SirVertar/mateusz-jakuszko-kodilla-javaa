@@ -29,7 +29,7 @@ public class LibraryTestSuite {
         //When
         Book book4 = new Book("Secrets of Java", "Ian Tenewitch", LocalDate.of(2005, 6, 15));
         library.getBooks().add(book4);
-        //The
+        //Then
         Assert.assertNotNull(shallowClonedLibrary);
         Assert.assertNotNull(deepClonedLibrary);
         Assert.assertNotEquals(4, deepClonedLibrary.getBooks().size());
