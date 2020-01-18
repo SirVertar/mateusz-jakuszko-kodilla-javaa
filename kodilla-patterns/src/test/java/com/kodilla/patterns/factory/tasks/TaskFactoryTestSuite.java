@@ -5,36 +5,41 @@ import org.junit.Test;
 
 public class TaskFactoryTestSuite {
     @Test
-    public void createTasksTest() {
+    public void createShoppingTaskTest() {
         //Given
         TaskFactory taskFactory = new TaskFactory();
         Task shoppingTask = taskFactory.createTask(TaskFactory.SHOPPING_TASK);
-        Task paintingTask = taskFactory.createTask(TaskFactory.PAINTING_TASK);
-        Task drivingTask = taskFactory.createTask(TaskFactory.DRIVING_TASK);
         //When
         String whatToBuy = ((ShoppingTask)shoppingTask).getWhatToBuy();
-        String whatToPaint = ((PaintingTask)paintingTask).getColor();
-        String whereGetTo = ((DrivingTask)drivingTask).getWhere();
+        shoppingTask.executeTask();
         //Then
         Assert.assertEquals("Milk", whatToBuy);
-        Assert.assertEquals("Black", whatToPaint);
-        Assert.assertEquals("Hospital", whereGetTo);
+        Assert.assertTrue(shoppingTask.isTaskExecuted());
     }
 
     @Test
-    public void checkIsTaskExecuted() {
+    public void createPaintingTaskTest() {
         //Given
         TaskFactory taskFactory = new TaskFactory();
-        Task shoppingTask = taskFactory.createTask(TaskFactory.SHOPPING_TASK);
         Task paintingTask = taskFactory.createTask(TaskFactory.PAINTING_TASK);
-        Task drivingTask = taskFactory.createTask(TaskFactory.DRIVING_TASK);
         //When
-        shoppingTask.executeTask();
+        String whatToPaint = ((PaintingTask)paintingTask).getColor();
         paintingTask.executeTask();
         //Then
-        Assert.assertTrue(shoppingTask.isTaskExecuted());
+        Assert.assertEquals("Black", whatToPaint);
         Assert.assertTrue(paintingTask.isTaskExecuted());
-        Assert.assertFalse(drivingTask.isTaskExecuted());
     }
 
+    @Test
+    public void createDrivingTaskTest() {
+        //Given
+        TaskFactory taskFactory = new TaskFactory();
+        Task drivingTask = taskFactory.createTask(TaskFactory.DRIVING_TASK);
+        //When
+        String whereGetTo = ((DrivingTask)drivingTask).getWhere();
+        drivingTask.executeTask();
+        //Then
+        Assert.assertEquals("Hospital", whereGetTo);
+        Assert.assertTrue(drivingTask.isTaskExecuted());
+    }
 }

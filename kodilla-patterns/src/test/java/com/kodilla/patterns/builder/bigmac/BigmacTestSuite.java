@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class BigmacTestSuite {
     @Test
-    public void BigmacBuilderTest() {
+    public void bigmacBuilderTest() {
         //Given
         Bigmac bigmac = new Bigmac.BigMacBuilder()
                 .bun(Bun.WITH_SESAME)
@@ -24,7 +24,7 @@ public class BigmacTestSuite {
     }
 
     @Test
-    public void BigMacMaximumIngredientsTest() {
+    public void bigMacMaximumIngredientsTest() {
         //Given
         Bigmac bigmac = new Bigmac.BigMacBuilder()
                 .bun(Bun.WITH_SESAME)
