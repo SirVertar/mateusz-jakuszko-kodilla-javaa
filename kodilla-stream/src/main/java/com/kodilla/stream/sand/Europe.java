@@ -1,6 +1,7 @@
 package com.kodilla.stream.sand;
 
 import java.math.BigDecimal;
+import com.kodilla.stream.sand.SandStorage;
 
 public final class Europe implements SandStorage {
     @Override

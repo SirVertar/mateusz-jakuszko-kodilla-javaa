@@ -136,52 +136,52 @@ public class BoardTestSuite {
         Assert.assertEquals(2, longTasks);
     }
 
-    @Test
-    public void testAddTaskListAverageWorkingOnTask() {
-        //Given
-        Board project = prepareTestData();
-
-        //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-        int numberOfTasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(p -> p.getTasks().stream())
-                .map(p -> 1)
-                .reduce(0, (sum, current) -> sum += current);
-        int sumOfDays = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(p -> p.getTasks().stream())
-                .map(t -> LocalDate.now().getDayOfYear() - t.getCreated().getDayOfYear())
-                .reduce(0, (sum, current) -> sum += current);
-
-        double average = sumOfDays/numberOfTasks;
-
-        //Then
-        Assert.assertEquals(3, numberOfTasks);
-        Assert.assertEquals(30, sumOfDays);
-        Assert.assertEquals(10, average,0);
-
-    }
-
-    @Test
-    public void testAddTaskListAverageWorkingOnTaskWithScalarCollector() {
-        //Given
-        Board project = prepareTestData();
-
-        //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-
-        double average = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(p -> p.getTasks().stream())
-                .mapToInt(p -> LocalDate.now().getDayOfYear() - p.getCreated().getDayOfYear())
-                .average().getAsDouble();
-
-        //Then
-        Assert.assertEquals(10, average,0);
-
-    }
+//    @Test
+//    public void testAddTaskListAverageWorkingOnTask() {
+//        //Given
+//        Board project = prepareTestData();
+//
+//        //When
+//        List<TaskList> inProgressTasks = new ArrayList<>();
+//        inProgressTasks.add(new TaskList("In progress"));
+//        int numberOfTasks = project.getTaskLists().stream()
+//                .filter(inProgressTasks::contains)
+//                .flatMap(p -> p.getTasks().stream())
+//                .map(p -> 1)
+//                .reduce(0, (sum, current) -> sum += current);
+//        int sumOfDays = project.getTaskLists().stream()
+//                .filter(inProgressTasks::contains)
+//                .flatMap(p -> p.getTasks().stream())
+//                .map(t -> LocalDate.now().getDayOfYear() - t.getCreated().getDayOfYear())
+//                .reduce(0, (sum, current) -> sum += current);
+//
+//        double average = sumOfDays/numberOfTasks;
+//
+//        //Then
+//        Assert.assertEquals(3, numberOfTasks);
+//        Assert.assertEquals(30, sumOfDays);
+//        Assert.assertEquals(10, average,0);
+//
+//    }
+//
+//    @Test
+//    public void testAddTaskListAverageWorkingOnTaskWithScalarCollector() {
+//        //Given
+//        Board project = prepareTestData();
+//
+//        //When
+//        List<TaskList> inProgressTasks = new ArrayList<>();
+//        inProgressTasks.add(new TaskList("In progress"));
+//
+//        double average = project.getTaskLists().stream()
+//                .filter(inProgressTasks::contains)
+//                .flatMap(p -> p.getTasks().stream())
+//                .mapToInt(p -> LocalDate.now().getDayOfYear() - p.getCreated().getDayOfYear())
+//                .average().getAsDouble();
+//
+//        //Then
+//        Assert.assertEquals(10, average,0);
+//
+//    }
 
 }
