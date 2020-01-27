@@ -9,7 +9,7 @@ public class SudokuElement {
     private static int lastElementNumber = 1;
     private int id;
     private int empty = -1;
-    private int numberInElement;
+    private int fieldOfElement = -1;
     private int columnIndex = -1;
     private int rowIndex = -1;
     private int blockIndex = -1;
@@ -56,8 +56,8 @@ public class SudokuElement {
         return blockIndex;
     }
 
-    public int getNumberInElement() {
-        return numberInElement;
+    public int getFieldOfElement() {
+        return fieldOfElement;
     }
 
     public void setColumnIndex(int columnIndex) {
@@ -90,9 +90,9 @@ public class SudokuElement {
         SudokuElement.lastElementNumber = lastElementNumber;
     }
 
-    public void setNumberInElement(int numberInElement) {
+    public void setFieldOfElement(int fieldOfElement) {
         empty = 1;
-        this.numberInElement = numberInElement;
+        this.fieldOfElement = fieldOfElement;
     }
 
     public void setPossibleNumbers(List<Integer> possibleNumbers) {
@@ -103,9 +103,9 @@ public class SudokuElement {
     public String toString() {
         if (empty != -1) {
             if (id % 3 == 0 && id % 9 != 0) {
-                return " | " + numberInElement + " |      |  ";
+                return " | " + fieldOfElement + " |      |  ";
             }
-            return " | " + numberInElement + " |  ";
+            return " | " + fieldOfElement + " |  ";
         }
         if (id % 3 == 0 && id % 9 != 0) {
             return " | " + " " + " |      |  ";

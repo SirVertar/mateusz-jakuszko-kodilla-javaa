@@ -13,7 +13,7 @@ public class SudokuColumn {
     public boolean isPossibleNumberInSomeOfElementsIFieldnColumn(SudokuBoard sudokuBoard, SudokuElement sudokuElement, int possibleNumber) {
         SudokuColumn sudokuColumn = sudokuBoard.getSudokuColumns()[sudokuElement.getColumnIndex()];
         for (SudokuElement sudokuElementInColumn : sudokuColumn.getColumn()) {
-            if (sudokuElementInColumn.getNumberInElement() == possibleNumber) {
+            if (sudokuElementInColumn.getFieldOfElement() == possibleNumber) {
                 return true;
             }
         }
@@ -29,6 +29,19 @@ public class SudokuColumn {
             }
             if (quantityOfPossibleNumbersInOtherElements == 1) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isRepeatingFieldsOfElementsInColumn() {
+        List<Integer> temporaryArray = new ArrayList<>();
+        for (SudokuElement sudokuElement: column) {
+            if (sudokuElement.getFieldOfElement() != -1) {
+                if (temporaryArray.contains(sudokuElement.getFieldOfElement())) {
+                    return true;
+                }
+                temporaryArray.add(sudokuElement.getFieldOfElement());
             }
         }
         return false;

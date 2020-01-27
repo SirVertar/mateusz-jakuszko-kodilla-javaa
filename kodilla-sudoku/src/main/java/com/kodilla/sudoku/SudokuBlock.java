@@ -1,19 +1,21 @@
 package com.kodilla.sudoku;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SudokuBlock {
-    private Set<SudokuElement> sudokuBlock;
+    private Set<SudokuElement> block;
 
     public SudokuBlock() {
-        sudokuBlock = new HashSet<>();
+        block = new HashSet<>();
     }
 
     public boolean isPossibleNumberInSomeOfElementsFieldInBlock(SudokuBoard sudokuBoard, SudokuElement sudokuElement, int possibleNumber) {
         SudokuBlock sudokuBlock = sudokuBoard.getSudokuBlocks()[sudokuElement.getBlockIndex()];
-        for (SudokuElement sudokuElementInBlock : sudokuBlock.getSudokuBlock()) {
-            if (sudokuElementInBlock.getNumberInElement() == possibleNumber) {
+        for (SudokuElement sudokuElementInBlock : sudokuBlock.getBlock()) {
+            if (sudokuElementInBlock.getFieldOfElement() == possibleNumber) {
                 return true;
             }
         }
@@ -23,7 +25,7 @@ public class SudokuBlock {
     public boolean isPossibleNumberInOtherElementsPossibleNumbersArrayInBlock(SudokuBoard sudokuBoard, SudokuElement sudokuElement, int possibleNumber) {
         int quantityOfPossibleNumbersInOtherElements = -1;
         SudokuBlock sudokuBlock = sudokuBoard.getSudokuBlocks()[sudokuElement.getBlockIndex()];
-        for (SudokuElement sudokuElementInBlock : sudokuBlock.getSudokuBlock()) {
+        for (SudokuElement sudokuElementInBlock : sudokuBlock.getBlock()) {
             if (sudokuElementInBlock.getPossibleNumbers().contains(possibleNumber)) {
                 quantityOfPossibleNumbersInOtherElements++;
             }
@@ -34,7 +36,20 @@ public class SudokuBlock {
         return false;
     }
 
-    public Set<SudokuElement> getSudokuBlock() {
-        return sudokuBlock;
+    public boolean isRepeatingFieldsOfElementsInBlock() {
+        List<Integer> temporaryArray = new ArrayList<>();
+        for (SudokuElement sudokuElement: block) {
+            if (sudokuElement.getFieldOfElement() != -1) {
+                if (temporaryArray.contains(sudokuElement.getFieldOfElement())) {
+                    return true;
+                }
+                temporaryArray.add(sudokuElement.getFieldOfElement());
+            }
+        }
+        return false;
+    }
+
+    public Set<SudokuElement> getBlock() {
+        return block;
     }
 }

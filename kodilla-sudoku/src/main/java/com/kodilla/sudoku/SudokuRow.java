@@ -21,7 +21,7 @@ public class SudokuRow {
 
     public boolean isPossibleNumberInSomeOfElementsFieldInRow(SudokuRow sudokuRow, int possibleNumber) {
         for (SudokuElement sudokuElementInRow : sudokuRow.getRow()) {
-            if (sudokuElementInRow.getNumberInElement() == possibleNumber) {
+            if (sudokuElementInRow.getFieldOfElement() == possibleNumber) {
                 return true;
             }
         }
@@ -36,6 +36,19 @@ public class SudokuRow {
             }
             if (quantityOfPossibleNumbersInOtherElements == 1) {
                 return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isRepeatingFieldsOfElementsInRow() {
+        List<Integer> temporaryArray = new ArrayList<>();
+        for (SudokuElement sudokuElement: row) {
+            if (sudokuElement.getFieldOfElement() != -1) {
+                if (temporaryArray.contains(sudokuElement.getFieldOfElement())) {
+                    return true;
+                }
+                temporaryArray.add(sudokuElement.getFieldOfElement());
             }
         }
         return false;

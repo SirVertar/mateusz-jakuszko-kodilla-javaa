@@ -54,19 +54,19 @@ public class SudokuBoard extends Prototype {
                 case 1:
                 case 2:
                     sudokuRows[numberOfRow].getRow().get(j).setBlockIndex(numberOfStartBigSquare);
-                    sudokuBlocks[numberOfStartBigSquare].getSudokuBlock().add(sudokuRows[numberOfRow].getRow().get(j));
+                    sudokuBlocks[numberOfStartBigSquare].getBlock().add(sudokuRows[numberOfRow].getRow().get(j));
                     break;
                 case 3:
                 case 4:
                 case 5:
                     sudokuRows[numberOfRow].getRow().get(j).setBlockIndex(numberOfStartBigSquare + 1);
-                    sudokuBlocks[numberOfStartBigSquare + 1].getSudokuBlock().add(sudokuRows[numberOfRow].getRow().get(j));
+                    sudokuBlocks[numberOfStartBigSquare + 1].getBlock().add(sudokuRows[numberOfRow].getRow().get(j));
                     break;
                 case 6:
                 case 7:
                 case 8:
                     sudokuRows[numberOfRow].getRow().get(j).setBlockIndex(numberOfStartBigSquare + 2);
-                    sudokuBlocks[numberOfStartBigSquare + 2].getSudokuBlock().add(sudokuRows[numberOfRow].getRow().get(j));
+                    sudokuBlocks[numberOfStartBigSquare + 2].getBlock().add(sudokuRows[numberOfRow].getRow().get(j));
                     break;
             }
         }
@@ -95,20 +95,62 @@ public class SudokuBoard extends Prototype {
         return true;
     }
 
+    public boolean isThereErrorInBoard() {
+        for (int i = 0; i < NUMBER_OF_ROWS; i++) {
+            if (sudokuRows[i].isRepeatingFieldsOfElementsInRow() ||
+                    sudokuBlocks[i].isRepeatingFieldsOfElementsInBlock() ||
+                    sudokuColumns[i].isRepeatingFieldsOfElementsInColumn()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setFieldsInElement(int[] choice) {
+        int rowNumber = -1;
+        int columnNumber = -1;
+        int fieldNumber = -1;
+        for (int i = 0; i < choice.length; i++) {
+            switch (i) {
+                case 0:
+                    rowNumber = choice[i];
+                case 1:
+                    columnNumber = choice[i];
+                case 2:
+                    fieldNumber = choice[i];
+            }
+        }
+        this.getSudokuRows()[rowNumber].getRow().get(columnNumber).setFieldOfElement(fieldNumber);
+    }
+
+    public void removeFieldsInElement(int[] choice) {
+        int rowNumber = -1;
+        int columnNumber = -1;
+        for (int i = 0; i < choice.length; i++) {
+            switch (i) {
+                case 0:
+                    rowNumber = choice[i];
+                case 1:
+                    columnNumber = choice[i];
+            }
+        }
+        this.getSudokuRows()[rowNumber].getRow().get(columnNumber).setFieldOfElement(-1);
+        this.getSudokuRows()[rowNumber].getRow().get(columnNumber).setEmpty(-1);
+    }
+
     public SudokuBoard shallowCopy() throws CloneNotSupportedException {
-        return (SudokuBoard)super.clone();
+        return (SudokuBoard) super.clone();
     }
 
     public SudokuBoard deepCopy() throws CloneNotSupportedException {
-        SudokuBoard clonedSudokuBoard = (SudokuBoard)super.clone();
+        SudokuBoard clonedSudokuBoard = (SudokuBoard) super.clone();
         SudokuElement.setLastElementNumber(1);
         clonedSudokuBoard.sudokuRows = new SudokuRow[NUMBER_OF_ROWS];
         for (int i = 0; i < NUMBER_OF_ROWS; i++) {
             clonedSudokuBoard.sudokuRows[i] = new SudokuRow(NUMBER_OF_COLUMNS);
             for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
-
                 clonedSudokuBoard.sudokuRows[i].getRow().get(j).setPossibleNumbers(sudokuRows[i].getRow().get(j).getPossibleNumbers());
-                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setNumberInElement(sudokuRows[i].getRow().get(j).getNumberInElement());
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setFieldOfElement(sudokuRows[i].getRow().get(j).getFieldOfElement());
                 clonedSudokuBoard.sudokuRows[i].getRow().get(j).setBlockIndex(sudokuRows[i].getRow().get(j).getBlockIndex());
                 clonedSudokuBoard.sudokuRows[i].getRow().get(j).setRowIndex(sudokuRows[i].getRow().get(j).getRowIndex());
                 clonedSudokuBoard.sudokuRows[i].getRow().get(j).setColumnIndex(sudokuRows[i].getRow().get(j).getColumnIndex());

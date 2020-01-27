@@ -32,7 +32,7 @@ public class SudokuBoardTestSuite {
         //Given
         SudokuBoard sudokuBoard = new SudokuBoard();
         SudokuBlock[] sudokuBlocks = sudokuBoard.getSudokuBlocks();
-        Set<SudokuElement> sudokuBlock = sudokuBlocks[1].getSudokuBlock();
+        Set<SudokuElement> sudokuBlock = sudokuBlocks[1].getBlock();
         //When
         int numberOfSudokuBlocks = sudokuBlocks.length;
         int sizeOfBlock = sudokuBlock.size();
@@ -80,9 +80,9 @@ public class SudokuBoardTestSuite {
         SudokuElement.setLastElementNumber(1);
         SudokuBoard sudokuBoard = new SudokuBoard();
         //When
-        sudokuBoard.getSudokuRows()[0].getRow().get(1).setNumberInElement(5);
-        sudokuBoard.getSudokuRows()[5].getRow().get(4).setNumberInElement(3);
-        sudokuBoard.getSudokuRows()[7].getRow().get(3).setNumberInElement(1);
+        sudokuBoard.getSudokuRows()[0].getRow().get(1).setFieldOfElement(5);
+        sudokuBoard.getSudokuRows()[5].getRow().get(4).setFieldOfElement(3);
+        sudokuBoard.getSudokuRows()[7].getRow().get(3).setFieldOfElement(1);
 
         SudokuBoard clonedSudokuBoard = null;
         try {
@@ -91,23 +91,23 @@ public class SudokuBoardTestSuite {
             e.printStackTrace();
         }
         assert clonedSudokuBoard != null;
-        clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).setNumberInElement(2);
-        clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).setNumberInElement(8);
-        clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).setNumberInElement(4);
+        clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).setFieldOfElement(2);
+        clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).setFieldOfElement(8);
+        clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).setFieldOfElement(4);
 
         //Then
-        Assert.assertNotEquals(5, sudokuBoard.getSudokuRows()[0].getRow().get(1).getNumberInElement());
-        Assert.assertNotEquals(3, sudokuBoard.getSudokuRows()[5].getRow().get(4).getNumberInElement());
-        Assert.assertNotEquals(1, sudokuBoard.getSudokuRows()[7].getRow().get(3).getNumberInElement());
-        Assert.assertEquals(2, sudokuBoard.getSudokuRows()[0].getRow().get(1).getNumberInElement());
-        Assert.assertEquals(8, sudokuBoard.getSudokuRows()[5].getRow().get(4).getNumberInElement());
-        Assert.assertEquals(4, sudokuBoard.getSudokuRows()[7].getRow().get(3).getNumberInElement());
-        Assert.assertEquals(2, clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).getNumberInElement());
-        Assert.assertEquals(8, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getNumberInElement());
-        Assert.assertEquals(4, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getNumberInElement());
-        Assert.assertNotEquals(5, clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).getNumberInElement());
-        Assert.assertNotEquals(3, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getNumberInElement());
-        Assert.assertNotEquals(1, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getNumberInElement());
+        Assert.assertNotEquals(5, sudokuBoard.getSudokuRows()[0].getRow().get(1).getFieldOfElement());
+        Assert.assertNotEquals(3, sudokuBoard.getSudokuRows()[5].getRow().get(4).getFieldOfElement());
+        Assert.assertNotEquals(1, sudokuBoard.getSudokuRows()[7].getRow().get(3).getFieldOfElement());
+        Assert.assertEquals(2, sudokuBoard.getSudokuRows()[0].getRow().get(1).getFieldOfElement());
+        Assert.assertEquals(8, sudokuBoard.getSudokuRows()[5].getRow().get(4).getFieldOfElement());
+        Assert.assertEquals(4, sudokuBoard.getSudokuRows()[7].getRow().get(3).getFieldOfElement());
+        Assert.assertEquals(2, clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).getFieldOfElement());
+        Assert.assertEquals(8, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getFieldOfElement());
+        Assert.assertEquals(4, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getFieldOfElement());
+        Assert.assertNotEquals(5, clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).getFieldOfElement());
+        Assert.assertNotEquals(3, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getFieldOfElement());
+        Assert.assertNotEquals(1, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getFieldOfElement());
     }
 
     @Test
@@ -116,9 +116,9 @@ public class SudokuBoardTestSuite {
         SudokuElement.setLastElementNumber(1);
         SudokuBoard sudokuBoard = new SudokuBoard();
         //When
-        sudokuBoard.getSudokuRows()[0].getRow().get(1).setNumberInElement(5);
-        sudokuBoard.getSudokuRows()[5].getRow().get(4).setNumberInElement(3);
-        sudokuBoard.getSudokuRows()[7].getRow().get(3).setNumberInElement(1);
+        sudokuBoard.getSudokuRows()[0].getRow().get(1).setFieldOfElement(5);
+        sudokuBoard.getSudokuRows()[5].getRow().get(4).setFieldOfElement(3);
+        sudokuBoard.getSudokuRows()[7].getRow().get(3).setFieldOfElement(1);
 
         SudokuBoard clonedSudokuBoard = null;
         try {
@@ -127,22 +127,22 @@ public class SudokuBoardTestSuite {
             e.printStackTrace();
         }
         assert clonedSudokuBoard != null;
-        clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).setNumberInElement(8);
-        clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).setNumberInElement(4);
+        clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).setFieldOfElement(8);
+        clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).setFieldOfElement(4);
 
         int sizeOfClonedBoard = clonedSudokuBoard.getSudokuRows().length * clonedSudokuBoard.getSudokuRows()[1].getRow().size();
         System.out.println(sudokuBoard);
         System.out.println(clonedSudokuBoard);
         //Then
         Assert.assertEquals(81, sizeOfClonedBoard);
-        Assert.assertEquals(5, sudokuBoard.getSudokuRows()[0].getRow().get(1).getNumberInElement());
-        Assert.assertEquals(3, sudokuBoard.getSudokuRows()[5].getRow().get(4).getNumberInElement());
-        Assert.assertEquals(1, sudokuBoard.getSudokuRows()[7].getRow().get(3).getNumberInElement());
-        Assert.assertEquals(5, clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).getNumberInElement());
-        Assert.assertEquals(8, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getNumberInElement());
-        Assert.assertEquals(4, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getNumberInElement());
-        Assert.assertNotEquals(3, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getNumberInElement());
-        Assert.assertNotEquals(1, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getNumberInElement());
+        Assert.assertEquals(5, sudokuBoard.getSudokuRows()[0].getRow().get(1).getFieldOfElement());
+        Assert.assertEquals(3, sudokuBoard.getSudokuRows()[5].getRow().get(4).getFieldOfElement());
+        Assert.assertEquals(1, sudokuBoard.getSudokuRows()[7].getRow().get(3).getFieldOfElement());
+        Assert.assertEquals(5, clonedSudokuBoard.getSudokuRows()[0].getRow().get(1).getFieldOfElement());
+        Assert.assertEquals(8, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getFieldOfElement());
+        Assert.assertEquals(4, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getFieldOfElement());
+        Assert.assertNotEquals(3, clonedSudokuBoard.getSudokuRows()[5].getRow().get(4).getFieldOfElement());
+        Assert.assertNotEquals(1, clonedSudokuBoard.getSudokuRows()[7].getRow().get(3).getFieldOfElement());
     }
 
 }
