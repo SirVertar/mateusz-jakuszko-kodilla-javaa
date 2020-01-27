@@ -1,11 +1,11 @@
 package com.kodilla.sudoku;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class SudokuElement {
-    private Set<Integer> possibleNumbers;
+    private List<Integer> possibleNumbers;
     private static int lastElementNumber = 1;
     private int id;
     private int empty = -1;
@@ -21,8 +21,8 @@ public class SudokuElement {
         lastElementNumber++;
     }
 
-    private Set<Integer> createPossibleNumbersSet() {
-        Set<Integer> possibleNumbers = new HashSet<>();
+    public List<Integer> createPossibleNumbersSet() {
+        List<Integer> possibleNumbers = new ArrayList<>();
         IntStream.rangeClosed(1, 9)
                 .forEach(possibleNumbers::add);
         return possibleNumbers;
@@ -32,7 +32,7 @@ public class SudokuElement {
         possibleNumbers.remove(number);
     }
 
-    public Set<Integer> getPossibleNumbers() {
+    public List<Integer> getPossibleNumbers() {
         return possibleNumbers;
     }
 
@@ -72,6 +72,14 @@ public class SudokuElement {
         }
     }
 
+    public void setEmpty(int empty) {
+        this.empty = empty;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setBlockIndex(int blockIndex) {
         if (this.blockIndex == -1) {
             this.blockIndex = blockIndex;
@@ -85,6 +93,10 @@ public class SudokuElement {
     public void setNumberInElement(int numberInElement) {
         empty = 1;
         this.numberInElement = numberInElement;
+    }
+
+    public void setPossibleNumbers(List<Integer> possibleNumbers) {
+        this.possibleNumbers = possibleNumbers;
     }
 
     @Override

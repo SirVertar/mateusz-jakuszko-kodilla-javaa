@@ -44,12 +44,9 @@ public class SudokuGame {
         sudokuBoard.getSudokuRows()[8].getRow().get(8).setNumberInElement(8);
 
 
-
-
         System.out.println(sudokuBoard);
 
         GameController gameController = new GameController(sudokuBoard);
         gameController.startGame();
-        System.out.println(sudokuBoard);
     }
 }

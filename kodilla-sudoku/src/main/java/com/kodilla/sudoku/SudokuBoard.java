@@ -1,12 +1,13 @@
 package com.kodilla.sudoku;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SudokuBoard extends Prototype {
     private SudokuRow[] sudokuRows;
     private SudokuColumn[] sudokuColumns;
     private SudokuBlock[] sudokuBlocks;
-    private BacktrackData[] backtrack;
+    private List<BacktrackData> backtrack;
     private static final int NUMBER_OF_ROWS = 9;
     private static final int NUMBER_OF_COLUMNS = 9;
     private static final int NUMBER_OF_SQUARES = 9;
@@ -15,12 +16,13 @@ public class SudokuBoard extends Prototype {
         sudokuRows = createRows();
         sudokuBlocks = createSudokuBlocks(sudokuRows);
         sudokuColumns = createSudokuColumns(sudokuRows);
+        backtrack = new ArrayList<>();
     }
 
     private SudokuRow[] createRows() {
         SudokuRow[] board = new SudokuRow[NUMBER_OF_ROWS];
         for (int i = 0; i < NUMBER_OF_ROWS; i++) {
-            board[i] = new SudokuRow(i);
+            board[i] = new SudokuRow(NUMBER_OF_COLUMNS);
         }
         return board;
     }
@@ -99,16 +101,25 @@ public class SudokuBoard extends Prototype {
 
     public SudokuBoard deepCopy() throws CloneNotSupportedException {
         SudokuBoard clonedSudokuBoard = (SudokuBoard)super.clone();
+        SudokuElement.setLastElementNumber(1);
+        clonedSudokuBoard.sudokuRows = new SudokuRow[NUMBER_OF_ROWS];
+        for (int i = 0; i < NUMBER_OF_ROWS; i++) {
+            clonedSudokuBoard.sudokuRows[i] = new SudokuRow(NUMBER_OF_COLUMNS);
+            for (int j = 0; j < NUMBER_OF_COLUMNS; j++) {
 
-        clonedSudokuBoard.sudokuRows = new SudokuRow[sudokuRows.length];
-        for (int i = 0; i < sudokuRows.length; i++) {
-            clonedSudokuBoard.sudokuRows[i] = new SudokuRow(i);
-            for (int j = 0; j < sudokuRows[i].getRow().size(); j++) {
-                clonedSudokuBoard.sudokuRows[i].getRow().add(sudokuRows[i].getRow().get(j));
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setPossibleNumbers(sudokuRows[i].getRow().get(j).getPossibleNumbers());
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setNumberInElement(sudokuRows[i].getRow().get(j).getNumberInElement());
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setBlockIndex(sudokuRows[i].getRow().get(j).getBlockIndex());
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setRowIndex(sudokuRows[i].getRow().get(j).getRowIndex());
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setColumnIndex(sudokuRows[i].getRow().get(j).getColumnIndex());
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setEmpty(sudokuRows[i].getRow().get(j).getEmpty());
+                clonedSudokuBoard.sudokuRows[i].getRow().get(j).setId(sudokuRows[i].getRow().get(j).getId());
             }
         }
         clonedSudokuBoard.sudokuColumns = createSudokuColumns(clonedSudokuBoard.sudokuRows);
         clonedSudokuBoard.sudokuBlocks = createSudokuBlocks(clonedSudokuBoard.sudokuRows);
+        clonedSudokuBoard.backtrack = new ArrayList<>();
+        clonedSudokuBoard.backtrack.addAll(backtrack);
 
         return clonedSudokuBoard;
     }
@@ -123,6 +134,10 @@ public class SudokuBoard extends Prototype {
 
     public SudokuBlock[] getSudokuBlocks() {
         return sudokuBlocks;
+    }
+
+    public List<BacktrackData> getBacktrack() {
+        return backtrack;
     }
 
     @Override
