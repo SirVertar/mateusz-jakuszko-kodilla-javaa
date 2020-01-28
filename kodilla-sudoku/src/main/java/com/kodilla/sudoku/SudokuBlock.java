@@ -6,11 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 public class SudokuBlock {
-    private Set<SudokuElement> block;
-
-    public SudokuBlock() {
-        block = new HashSet<>();
-    }
+    private Set<SudokuElement> block = new HashSet<>();
 
     public boolean isPossibleNumberInSomeOfElementsFieldInBlock(SudokuBoard sudokuBoard, SudokuElement sudokuElement, int possibleNumber) {
         SudokuBlock sudokuBlock = sudokuBoard.getSudokuBlocks()[sudokuElement.getBlockIndex()];

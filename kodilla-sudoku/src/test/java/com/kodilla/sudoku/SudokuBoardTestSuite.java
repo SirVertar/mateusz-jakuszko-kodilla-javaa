@@ -10,7 +10,7 @@ public class SudokuBoardTestSuite {
     @Test
     public void createRowsTest() {
         //Given
-        SudokuElement.setLastElementNumber(1);
+        SudokuElement.setLastElement(1);
         SudokuBoard sudokuBoard = new SudokuBoard();
         SudokuRow[] sudokuRows = sudokuBoard.getSudokuRows();
         //When
@@ -56,7 +56,7 @@ public class SudokuBoardTestSuite {
     @Test
     public void createSudokuColumnsTest() {
         //Given
-        SudokuElement.setLastElementNumber(1);
+        SudokuElement.setLastElement(1);
         SudokuBoard sudokuBoard = new SudokuBoard();
         //When
         int numberOfColumns = sudokuBoard.getSudokuColumns().length;
@@ -77,7 +77,7 @@ public class SudokuBoardTestSuite {
     @Test
     public void shallowCloneTest() {
         //Given
-        SudokuElement.setLastElementNumber(1);
+        SudokuElement.setLastElement(1);
         SudokuBoard sudokuBoard = new SudokuBoard();
         //When
         sudokuBoard.getSudokuRows()[0].getRow().get(1).setFieldOfElement(5);
@@ -113,7 +113,7 @@ public class SudokuBoardTestSuite {
     @Test
     public void deepCloneTest() {
         //Given
-        SudokuElement.setLastElementNumber(1);
+        SudokuElement.setLastElement(1);
         SudokuBoard sudokuBoard = new SudokuBoard();
         //When
         sudokuBoard.getSudokuRows()[0].getRow().get(1).setFieldOfElement(5);

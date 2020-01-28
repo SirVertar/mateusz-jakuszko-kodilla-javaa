@@ -120,7 +120,7 @@ public class SudokuBoard extends Prototype {
                     fieldNumber = choice[i];
             }
         }
-        this.getSudokuRows()[rowNumber].getRow().get(columnNumber).setFieldOfElement(fieldNumber);
+        this.getSudokuRows()[rowNumber-1].getRow().get(columnNumber-1).setFieldOfElement(fieldNumber);
     }
 
     public void removeFieldsInElement(int[] choice) {
@@ -134,8 +134,8 @@ public class SudokuBoard extends Prototype {
                     columnNumber = choice[i];
             }
         }
-        this.getSudokuRows()[rowNumber].getRow().get(columnNumber).setFieldOfElement(-1);
-        this.getSudokuRows()[rowNumber].getRow().get(columnNumber).setEmpty(-1);
+        this.getSudokuRows()[rowNumber-1].getRow().get(columnNumber-1).setFieldOfElement(-1);
+        this.getSudokuRows()[rowNumber-1].getRow().get(columnNumber-1).setEmpty(-1);
     }
 
     public SudokuBoard shallowCopy() throws CloneNotSupportedException {
@@ -144,7 +144,7 @@ public class SudokuBoard extends Prototype {
 
     public SudokuBoard deepCopy() throws CloneNotSupportedException {
         SudokuBoard clonedSudokuBoard = (SudokuBoard) super.clone();
-        SudokuElement.setLastElementNumber(1);
+        SudokuElement.setLastElement(1);
         clonedSudokuBoard.sudokuRows = new SudokuRow[NUMBER_OF_ROWS];
         for (int i = 0; i < NUMBER_OF_ROWS; i++) {
             clonedSudokuBoard.sudokuRows[i] = new SudokuRow(NUMBER_OF_COLUMNS);

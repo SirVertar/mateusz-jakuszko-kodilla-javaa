@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class SudokuElement {
+    private static int LAST_ELEMENT = 1;
     private List<Integer> possibleNumbers;
-    private static int lastElementNumber = 1;
     private int id;
     private int empty = -1;
     private int fieldOfElement = -1;
@@ -17,8 +17,8 @@ public class SudokuElement {
 
     public SudokuElement() {
         possibleNumbers = createPossibleNumbersSet();
-        id = lastElementNumber;
-        lastElementNumber++;
+        id = LAST_ELEMENT;
+        LAST_ELEMENT++;
     }
 
     public List<Integer> createPossibleNumbersSet() {
@@ -86,8 +86,8 @@ public class SudokuElement {
         }
     }
 
-    public static void setLastElementNumber(int lastElementNumber) {
-        SudokuElement.lastElementNumber = lastElementNumber;
+    public static void setLastElement(int lastElement) {
+        SudokuElement.LAST_ELEMENT = lastElement;
     }
 
     public void setFieldOfElement(int fieldOfElement) {
