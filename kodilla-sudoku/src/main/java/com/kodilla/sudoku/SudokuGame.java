@@ -7,8 +7,5 @@ public class SudokuGame {
 
         GameController gameController = new GameController(sudokuBoard);
         gameController.startGame();
-
-
-
     }
 }
