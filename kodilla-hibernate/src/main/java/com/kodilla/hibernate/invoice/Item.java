@@ -35,16 +35,6 @@ public class Item {
         this.id = id;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
@@ -70,6 +60,16 @@ public class Item {
 
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @ManyToOne

@@ -11,7 +11,7 @@ public class Product {
     private int id;
     private String name;
     List<Item> items = new ArrayList<>();
-    Invoice invoice;
+
 
     public Product() {
     }
@@ -48,7 +48,6 @@ public class Product {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    @JoinColumn(name = "INVOICE_ID")
     public List<Item> getItems() {
         return items;
     }
@@ -57,13 +56,4 @@ public class Product {
         this.items = items;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "INVOICE_ID")
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
-    }
 }

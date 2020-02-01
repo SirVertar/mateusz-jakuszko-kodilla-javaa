@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -19,7 +20,9 @@ public class InvoiceDaoTestSuite {
     private InvoiceDao invoiceDao;
 
 
+
     @Test
+    @Transactional
     public void testInvoiceDaoSave() {
         //Given
         Product product1 = new Product("Apple");
@@ -32,6 +35,13 @@ public class InvoiceDaoTestSuite {
         Item item3 = new Item(BigDecimal.valueOf(50), 5, BigDecimal.valueOf(250));
         Item item4 = new Item(BigDecimal.valueOf(30), 6, BigDecimal.valueOf(180));
         Item item5 = new Item(BigDecimal.valueOf(20), 7, BigDecimal.valueOf(140));
+        Invoice invoice = new Invoice("32");
+
+        product1.getItems().add(item1);
+        product2.getItems().add(item2);
+        product3.getItems().add(item3);
+        product4.getItems().add(item4);
+        product5.getItems().add(item5);
 
         item1.setProduct(product1);
         item2.setProduct(product2);
@@ -39,37 +49,11 @@ public class InvoiceDaoTestSuite {
         item4.setProduct(product4);
         item5.setProduct(product5);
 
-        Invoice invoice = new Invoice("32");
-
         item1.setInvoice(invoice);
         item2.setInvoice(invoice);
         item3.setInvoice(invoice);
         item4.setInvoice(invoice);
         item5.setInvoice(invoice);
-
-        item1.setProduct(product1);
-        item2.setProduct(product1);
-        item3.setProduct(product1);
-        item4.setProduct(product1);
-        item5.setProduct(product1);
-
-        product1.setInvoice(invoice);
-        product2.setInvoice(invoice);
-        product3.setInvoice(invoice);
-        product4.setInvoice(invoice);
-        product5.setInvoice(invoice);
-
-        product1.getItems().add(item1);
-        product1.getItems().add(item2);
-        product1.getItems().add(item3);
-        product1.getItems().add(item4);
-        product1.getItems().add(item5);
-
-        invoice.getProducts().add(product1);
-        invoice.getProducts().add(product2);
-        invoice.getProducts().add(product3);
-        invoice.getProducts().add(product4);
-        invoice.getProducts().add(product5);
 
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
@@ -78,6 +62,7 @@ public class InvoiceDaoTestSuite {
         invoice.getItems().add(item5);
 
         //When
+
         invoiceDao.save(invoice);
         int id = invoice.getId();
 
@@ -85,6 +70,6 @@ public class InvoiceDaoTestSuite {
         Assert.assertNotEquals(0, id);
 
         //CleanUp
-//        invoiceDao.deleteById(id);
+        //invoiceDao.deleteById(id);
     }
 }
