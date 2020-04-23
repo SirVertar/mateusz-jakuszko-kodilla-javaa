@@ -7,7 +7,7 @@ public class ShapeCollector {
     private ArrayList<Shape> listOfShapes = new ArrayList<Shape>();
 
     public boolean addFigure(Shape shape) {
-        if(shape != null) {
+        if (shape != null) {
             listOfShapes.add(shape);
             return true;
         } else {
@@ -16,7 +16,7 @@ public class ShapeCollector {
     }
 
     public boolean removeFigure(Shape shape) {
-        if(listOfShapes.indexOf(shape) >= 0) {
+        if (listOfShapes.indexOf(shape) >= 0) {
             listOfShapes.remove(shape);
             return true;
         } else {
@@ -30,8 +30,8 @@ public class ShapeCollector {
 
     public String showFigures() {
         StringBuilder allFigures = new StringBuilder();
-        for (int i = 0; i < listOfShapes.size() ; i++) {
-            if (i<listOfShapes.size()-1) {
+        for (int i = 0; i < listOfShapes.size(); i++) {
+            if (i < listOfShapes.size() - 1) {
                 allFigures.append(listOfShapes.get(i).toString()).append(", ");
             } else allFigures.append(listOfShapes.get(i));
         }
