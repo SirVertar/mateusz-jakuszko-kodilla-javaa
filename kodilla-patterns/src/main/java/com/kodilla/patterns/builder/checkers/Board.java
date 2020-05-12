@@ -24,9 +24,10 @@ public class Board {
         for(int n = MIN_INDEX; n <= MAX_INDEX; n++) {
             result += "|";
             for(int k = MIN_INDEX; k <= MAX_INDEX; k++) {
-                if(board[n][k] == null) {
+                if (board[n][k] == null) {
                     result += "  ";
                 } else {
+
                     result += (board[n][k]).getColor().equals(Figure.BLACK) ? "b" : "w";
                     result += (board[n][k]) instanceof Pawn ? "P" : "Q";
                 }
